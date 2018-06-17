@@ -24,7 +24,7 @@ default_shade_color black
 default_outline_color pink
 alignment top_right
 gap_x 62
-gap_y 10
+gap_y 20
 no_buffers yes
 uppercase no
 cpu_avg_samples 2
@@ -40,10 +40,10 @@ ${color1}SYSTEM ${hr 3}${color}
 Distro:$alignr$nodename
 Kernel: $alignr$kernel
 Uptime: $alignr$uptime
-#Temp: ${alignr}${acpitemp}C
-THROTLE: ${alignr}${freq} MHz
-Processes: ${alignr}$processes ($running_processes running)
-Load: ${alignr}$loadavg
+Temp: ${alignr}${hwmon 2 temp 1}C
+#THROTLE: ${alignr}${freq} MHz
+#Processes: ${alignr}$processes ($running_processes running)
+#Load: ${alignr}$loadavg
 
 ${color1}HARDWARE ${hr 1}${color}
 CPU1 ${alignr}${cpu cpu1}%
@@ -60,27 +60,30 @@ ${membar 8}
 Name${alignr}CPU  MEM
 ${hr}
 ${color1}Top 5 CPU${hr 1}${color}
-${top name 1}$alignr${top cpu 1}%${top mem 1}%
-${top name 2}$alignr${top cpu 2}%${top mem 2}%
-${top name 3}$alignr${top cpu 3}%${top mem 3}%
-${top name 4}$alignr${top cpu 4}%${top mem 4}%
-${top name 5}$alignr${top cpu 5}%${top mem 5}%
+${top name 1}$alignr${top cpu 1}${top mem 1}
+${top name 2}$alignr${top cpu 2}${top mem 2}
+${top name 3}$alignr${top cpu 3}${top mem 3}
+${top name 4}$alignr${top cpu 4}${top mem 4}
+${top name 5}$alignr${top cpu 5}${top mem 5}
+
 ${color1}Top 5 MEM${hr 1}${color}
-${top_mem name 1}$alignr${top_mem cpu 1}%${top_mem mem 1}%
-${top_mem name 2}$alignr${top_mem cpu 2}%${top_mem mem 2}%
-${top_mem name 3}$alignr${top_mem cpu 3}%${top_mem mem 3}%
-${top_mem name 4}$alignr${top_mem cpu 4}%${top_mem mem 4}%
-${top_mem name 5}$alignr${top_mem cpu 5}%${top_mem mem 5}%
+${top_mem name 1}$alignr${top_mem cpu 1}${top_mem mem 1}
+${top_mem name 2}$alignr${top_mem cpu 2}${top_mem mem 2}
+${top_mem name 3}$alignr${top_mem cpu 3}${top_mem mem 3}
+${top_mem name 4}$alignr${top_mem cpu 4}${top_mem mem 4}
+${top_mem name 5}$alignr${top_mem cpu 5}${top_mem mem 5}
 
 ${color1}Filesystem ${hr 1}${color}
-Read:$alignr$diskio_read
-${diskiograph_read 25,220 797979 FFFFFF}
-Write:$alignr$diskio_write
-${diskiograph_write 25,220 797979 FFFFFF}
+#Read:$alignr$diskio_read
+#{diskiograph_read 25,220 797979 FFFFFF}
+#Write:$alignr$diskio_write
+#${diskiograph_write 25,220 797979 FFFFFF}
 #Root: ${alignr}${fs_used /} / ${fs_size /}
 #${fs_bar 4 /}
 Home: ${alignr}${fs_used /home} / ${fs_size /home}
 ${fs_bar 4 /home}
+Storage: ${alignr}${fs_used /storage} / ${fs_size /storage}
+${fs_bar 4 /storage}
 SWAP${alignr}$swap / $swapmax
 ${swapbar}
 
